@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Hawli ❤️</title>
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+.app{
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+.password-screen{
+
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #351520 0%,
+            #12070b 45%,
+            #000 100%
+        );
+
+    z-index:100;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.password-screen.hide{
+
+    opacity:0;
+
+    transform:scale(1.12);
+
+    pointer-events:none;
+}
+
+.password-box{
+
+    width:100%;
+    max-width:330px;
+
+    padding:32px 24px;
+
+    text-align:center;
+
+    border-radius:26px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 20px 80px
+        rgba(0,0,0,.7);
+
+    animation:boxAppear 1s ease;
+}
+
+@keyframes boxAppear{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(40px)
+            scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.heart{
+
+    font-size:52px;
+
+    margin-bottom:18px;
+
+    animation:
+        heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+}
+
+.password-box h1{
+
+    font-size:23px;
+
+    margin-bottom:9px;
+}
+
+.subtitle{
+
+    color:#999;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+}
+
+.password-input{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.password-input input{
+
+    width:100%;
+
+    height:54px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    border-radius:16px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    outline:none;
+
+    text-align:center;
+}
+
+.password-input input::placeholder{
+
+    color:#888;
+}
+
+.password-input button{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.error{
+
+    min-height:18px;
+
+    margin-top:14px;
+
+    color:#ff6682;
+
+    font-size:12px;
+}
+
+
+/* =====================================================
+   UNLOCK
+===================================================== */
+
+.unlock-effect{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#000;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:200;
+}
+
+.unlock-effect.show{
+
+    animation:
+        unlockScreen
+        2.2s
+        forwards;
+}
+
+.unlock-heart{
+
+    font-size:85px;
+
+    animation:
+        unlockHeart
+        2.2s
+        ease
+        forwards;
+}
+
+@keyframes unlockScreen{
+
+    0%{
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    70%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+@keyframes unlockHeart{
+
+    0%{
+        opacity:0;
+        transform:scale(.3);
+    }
+
+    35%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+    65%{
+        transform:scale(1);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(2);
+    }
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+.home-screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    opacity:0;
+
+    transform:scale(.9);
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            #351520,
+            #10070b 48%,
+            #000
+        );
+
+    z-index:20;
+}
+
+.home-screen.show{
+
+    animation:
+        homeAppear
+        1.5s
+        ease
+        forwards;
+
+    pointer-events:auto;
+}
+
+@keyframes homeAppear{
+
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.home-heart{
+
+    font-size:72px;
+
+    margin-bottom:25px;
+
+    animation:
+        heartbeat
+        1.5s
+        infinite;
+}
+
+.home-title{
+
+    font-size:35px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+.home-subtitle{
+
+    max-width:310px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+.start-button{
+
+    margin-top:35px;
+
+    padding:15px 32px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   SUSPENSE INTRO
+===================================================== */
+
+.suspense{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    z-index:300;
+}
+
+.suspense.active{
+
+    display:flex;
+}
+
+.suspense-small{
+
+    color:#777;
+
+    font-size:11px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    opacity:0;
+
+    animation:
+        suspenseText
+        2s
+        forwards;
+}
+
+.suspense-title{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+    letter-spacing:2px;
+
+    opacity:0;
+
+    animation:
+        suspenseTitle
+        3s
+        1.5s
+        forwards;
+}
+
+.suspense-heart{
+
+    margin-top:30px;
+
+    font-size:35px;
+
+    opacity:0;
+
+    animation:
+        suspenseHeart
+        3s
+        3s
+        forwards;
+}
+
+@keyframes suspenseText{
+
+    0%{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    40%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.5;
+        transform:translateY(0);
+    }
+}
+
+@keyframes suspenseTitle{
+
+    0%{
+        opacity:0;
+        transform:scale(.8);
+        filter:blur(10px);
+    }
+
+    50%{
+        opacity:1;
+        filter:blur(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes suspenseHeart{
+
+    0%{
+        opacity:0;
+        transform:scale(.4);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.2);
+    }
+
+    100%{
+        opacity:.7;
+        transform:scale(1);
+    }
+}
+
+
+/* =====================================================
+   3D WORLD
+===================================================== */
+
+.world{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    background:#000;
+
+    perspective:1000px;
+
+    overflow:hidden;
+
+    z-index:50;
+}
+
+.world.active{
+
+    display:block;
+}
+
+.scene{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    transform-style:preserve-3d;
+
+    transform:
+        translateZ(-700px)
+        scale(.75);
+
+    transition:
+        transform
+        8s
+        cubic-bezier(.2,.7,.1,1);
+}
+
+
+/* =====================================================
+   ROOM WALL
+===================================================== */
+
+.wall{
+
+    position:absolute;
+
+    left:0;
+    top:5%;
+
+    width:100%;
+    height:70%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #110b0e,
+            #392229,
+            #140b10
+        );
+
+    transform:
+        translateZ(-300px);
+
+    box-shadow:
+        inset 0 0 120px #000;
+}
+
+
+/* =====================================================
+   FLOOR
+===================================================== */
+
+.floor{
+
+    position:absolute;
+
+    left:-20%;
+
+    top:60%;
+
+    width:140%;
+
+    height:70%;
+
+    background:
+
+        repeating-linear-gradient(
+            90deg,
+            #1b1215 0px,
+            #1b1215 55px,
+            #281a1f 56px,
+            #281a1f 110px
+        );
+
+    transform:
+        rotateX(72deg)
+        translateZ(-100px);
+
+    transform-origin:top;
+
+    box-shadow:
+        inset 0 20px 60px #000;
+}
+
+
+/* =====================================================
+   DOOR
+===================================================== */
+
+.door{
+
+    position:absolute;
+
+    left:50%;
+    top:15%;
+
+    width:150px;
+    height:300px;
+
+    transform:
+        translateX(-50%)
+        translateZ(-285px);
+
+    transform-origin:left center;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #27171c,
+            #53313b,
+            #24151a
+        );
+
+    border:
+        6px solid
+        #120b0d;
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,.8);
+
+    transition:
+        transform
+        3s
+        cubic-bezier(.2,.7,.2,1);
+}
+
+.door.open{
+
+    transform:
+        translateX(-50%)
+        translateZ(-285px)
+        rotateY(-95deg);
+}
+
+.door-handle{
+
+    position:absolute;
+
+    right:18px;
+    top:52%;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#d8a66c;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,180,100,.5);
+}
+
+
+/* =====================================================
+   LIGHT BEHIND DOOR
+===================================================== */
+
+.door-light{
+
+    position:absolute;
+
+    left:50%;
+    top:15%;
+
+    width:145px;
+    height:300px;
+
+    transform:
+        translateX(-50%)
+        translateZ(-290px);
+
+    background:
+
+        radial-gradient(
+            ellipse,
+            rgba(255,200,150,.9),
+            rgba(160,80,90,.2),
+            transparent 70%
+        );
+
+    filter:blur(12px);
+
+    opacity:0;
+
+    transition:
+        opacity 2s ease;
+}
+
+.door-light.show{
+
+    opacity:1;
+}
+
+
+/* =====================================================
+   PHOTO FRAMES
+===================================================== */
+
+.photo-frame{
+
+    position:absolute;
+
+    width:105px;
+    height:130px;
+
+    padding:7px;
+
+    background:#b88a57;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.8);
+
+    opacity:0;
+
+    transition:
+        opacity 2s ease;
+}
+
+.photo-frame img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+.photo-frame.show{
+
+    opacity:1;
+}
+
+.p1{
+    left:8%;
+    top:23%;
+    transform:
+        translateZ(-285px)
+        rotateY(8deg);
+}
+
+.p2{
+    right:8%;
+    top:23%;
+    transform:
+        translateZ(-285px)
+        rotateY(-8deg);
+}
+
+.p3{
+    left:17%;
+    top:52%;
+    transform:
+        translateZ(-280px);
+}
+
+.p4{
+    right:17%;
+    top:52%;
+    transform:
+        translateZ(-280px);
+}
+
+
+/* =====================================================
+   CENTER MESSAGE
+===================================================== */
+
+.final-message{
+
+    position:absolute;
+
+    left:50%;
+    top:43%;
+
+    width:90%;
+
+    transform:
+        translate(-50%,-50%)
+        translateZ(-250px);
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:
+        opacity 2s ease;
+}
+
+.final-message.show{
+
+    opacity:1;
+}
+
+.final-message h1{
+
+    font-size:32px;
+
+    text-shadow:
+        0 0 30px
+        rgba(255,100,150,.8);
+}
+
+.final-message p{
+
+    margin-top:14px;
+
+    color:#ccc;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+.particle{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    opacity:0;
+
+    animation:
+        particleFloat
+        5s
+        linear
+        infinite;
+}
+
+@keyframes particleFloat{
+
+    0%{
+        transform:
+            translateY(100vh)
+            scale(.5);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:.6;
+    }
+
+    100%{
+        transform:
+            translateY(-20vh)
+            scale(1.4);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   VIGNETTE
+===================================================== */
+
+.vignette{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 30%,
+            rgba(0,0,0,.85) 100%
+        );
+
+    z-index:40;
+}
+
+
+/* =====================================================
+   NEXT BUTTON
+===================================================== */
+
+.next{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index:60;
+
+    padding:
+        14px 28px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-weight:bold;
+
+    font-size:12px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1s;
+}
+
+.next.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .home-title{
+        font-size:30px;
+    }
+
+    .door{
+        width:120px;
+        height:260px;
+    }
+
+    .door-light{
+        width:115px;
+        height:260px;
+    }
+
+    .photo-frame{
+        width:70px;
+        height:90px;
+    }
+
+    .final-message h1{
+        font-size:26px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- =====================================================
+     PASSWORD
+===================================================== -->
+
+<div
+    class="password-screen"
+    id="passwordScreen"
+>
+
+    <div class="password-box">
+
+        <div class="heart">
+            ❤️
+        </div>
+
+        <h1>
+            A little surprise
+        </h1>
+
+        <p class="subtitle">
+            This little world was made
+            especially for you...
+        </p>
+
+        <div class="password-input">
+
+            <input
+                id="passwordInput"
+                type="password"
+                placeholder="Enter password"
+                autocomplete="off"
+            >
+
+            <button
+                onclick="checkPassword()"
+            >
+                UNLOCK ❤️
+            </button>
+
+        </div>
+
+        <div
+            class="error"
+            id="error"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     UNLOCK EFFECT
+===================================================== -->
+
+<div
+    class="unlock-effect"
+    id="unlockEffect"
+>
+
+    <div class="unlock-heart">
+        ❤️
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<div
+    class="home-screen"
+    id="homeScreen"
+>
+
+    <div class="home-heart">
+        💗
+    </div>
+
+    <div class="home-title">
+        For You, Hawli ❤️
+    </div>
+
+    <div class="home-subtitle">
+
+        I made something special
+        just for you...
+
+        <br><br>
+
+        But before you see it...
+
+        <br>
+
+        keep going.
+
+    </div>
+
+    <button
+        class="start-button"
+        onclick="startGift()"
+    >
+        OPEN MY GIFT 🎁
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     SUSPENSE
+===================================================== -->
+
+<div
+    class="suspense"
+    id="suspense"
+>
+
+    <div class="suspense-small">
+        Something is waiting for you
+    </div>
+
+    <div class="suspense-title">
+        Don't look away...
+    </div>
+
+    <div class="suspense-heart">
+        ❤️
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     3D WORLD
+===================================================== -->
+
+<div
+    class="world"
+    id="world"
+>
+
+    <div
+        class="scene"
+        id="scene"
+    >
+
+
+        <div class="wall"></div>
+
+        <div class="floor"></div>
+
+
+        <!-- LIGHT BEHIND DOOR -->
+
+        <div
+            class="door-light"
+            id="doorLight"
+        ></div>
+
+
+        <!-- DOOR -->
+
+        <div
+            class="door"
+            id="door"
+        >
+
+            <div class="door-handle"></div>
+
+        </div>
+
+
+        <!-- PHOTO 1 -->
+
+        <div
+            class="photo-frame p1"
+            id="photo1"
+        >
+
+            <img src="photo1.jpg">
+
+        </div>
+
+
+        <!-- PHOTO 2 -->
+
+        <div
+            class="photo-frame p2"
+            id="photo2"
+        >
+
+            <img src="photo2.jpg">
+
+        </div>
+
+
+        <!-- PHOTO 3 -->
+
+        <div
+            class="photo-frame p3"
+            id="photo3"
+        >
+
+            <img src="photo3.jpg">
+
+        </div>
+
+
+        <!-- PHOTO 4 -->
+
+        <div
+            class="photo-frame p4"
+            id="photo4"
+        >
+
+            <img src="photo4.jpg">
+
+        </div>
+
+
+        <!-- FINAL MESSAGE -->
+
+        <div
+            class="final-message"
+            id="finalMessage"
+        >
+
+            <h1>
+                Happy Birthday, Hawli ❤️
+            </h1>
+
+            <p>
+
+                You finally found it...
+
+                <br>
+
+                But this is only the beginning.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="vignette"></div>
+
+
+    <button
+        class="next"
+        id="nextButton"
+    >
+        CONTINUE ❤️
+    </button>
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="music"
+    loop
+>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<script>
+
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+const correctPassword = "hawliye";
+
+
+function checkPassword(){
+
+    const input =
+        document.getElementById(
+            "passwordInput"
+        );
+
+    const error =
+        document.getElementById(
+            "error"
+        );
+
+
+    if(
+        input.value.trim()
+        ===
+        correctPassword
+    ){
+
+        unlock();
+
+    }
+
+    else{
+
+        error.innerText =
+            "Wrong password ❤️";
+
+        input.value = "";
+
+        input.focus();
+
+    }
+
+}
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+document
+.getElementById("passwordInput")
+.addEventListener(
+    "keydown",
+    function(e){
+
+        if(e.key === "Enter"){
+
+            checkPassword();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   UNLOCK
+===================================================== */
+
+function unlock(){
+
+    const password =
+        document.getElementById(
+            "passwordScreen"
+        );
+
+    const effect =
+        document.getElementById(
+            "unlockEffect"
+        );
+
+    const home =
+        document.getElementById(
+            "homeScreen"
+        );
+
+
+    password.classList.add("hide");
+
+    effect.classList.add("show");
+
+
+    setTimeout(
+        function(){
+
+            home.classList.add("show");
+
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   START GIFT
+===================================================== */
+
+function startGift(){
+
+    const home =
+        document.getElementById(
+            "homeScreen"
+        );
+
+    const suspense =
+        document.getElementById(
+            "suspense"
+        );
+
+
+    home.style.opacity = "0";
+
+    home.style.transform =
+        "scale(1.15)";
+
+    home.style.pointerEvents =
+        "none";
+
+
+    setTimeout(
+        function(){
+
+            home.style.display =
+                "none";
+
+            suspense.classList.add(
+                "active"
+            );
+
+            startSuspense();
+
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   SUSPENSE SEQUENCE
+===================================================== */
+
+function startSuspense(){
+
+    setTimeout(
+        function(){
+
+            const suspense =
+                document.getElementById(
+                    "suspense"
+                );
+
+            suspense.style.transition =
+                "opacity 1.5s ease";
+
+            suspense.style.opacity =
+                "0";
+
+
+        },
+        5200
+    );
+
+
+    setTimeout(
+        function(){
+
+            const suspense =
+                document.getElementById(
+                    "suspense"
+                );
+
+            const world =
+                document.getElementById(
+                    "world"
+                );
+
+            suspense.style.display =
+                "none";
+
+            world.classList.add(
+                "active"
+            );
+
+            start3D();
+
+        },
+        6700
+    );
+
+}
+
+
+/* =====================================================
+   START 3D
+===================================================== */
+
+function start3D(){
+
+    const scene =
+        document.getElementById(
+            "scene"
+        );
+
+    const door =
+        document.getElementById(
+            "door"
+        );
+
+    const light =
+        document.getElementById(
+            "doorLight"
+        );
+
+
+    /* camera starts far away */
+
+    scene.style.transform =
+        "translateZ(-850px) scale(.65)";
+
+
+    /* slowly approach */
+
+    setTimeout(
+        function(){
+
+            scene.style.transform =
+                "translateZ(-300px) scale(1)";
+
+        },
+        200
+    );
+
+
+    /* light appears */
+
+    setTimeout(
+        function(){
+
+            light.classList.add(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+
+    /* door opens */
+
+    setTimeout(
+        function(){
+
+            door.classList.add(
+                "open"
+            );
+
+        },
+        4300
+    );
+
+
+    /* photos appear */
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("photo1")
+            .classList.add("show");
+
+        },
+        5600
+    );
+
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("photo2")
+            .classList.add("show");
+
+        },
+        6100
+    );
+
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("photo3")
+            .classList.add("show");
+
+        },
+        6600
+    );
+
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("photo4")
+            .classList.add("show");
+
+        },
+        7100
+    );
+
+
+    /* final reveal */
+
+    setTimeout(
+        function(){
+
+            document
+            .getElementById("finalMessage")
+            .classList.add("show");
+
+            document
+            .getElementById("nextButton")
+            .classList.add("show");
+
+            createParticles();
+
+        },
+        8500
+    );
+
+
+    /* music */
+
+    const music =
+        document.getElementById(
+            "music"
+        );
+
+    music.volume = .45;
+
+    music.play().catch(
+        function(){}
+    );
+
+}
+
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+function createParticles(){
+
+    const world =
+        document.getElementById(
+            "world"
+        );
+
+
+    for(
+        let i=0;
+        i<35;
+        i++
+    ){
+
+        const p =
+            document.createElement(
+                "div"
+            );
+
+        p.className =
+            "particle";
+
+        p.style.left =
+            Math.random()*100+"%";
+
+        p.style.animationDelay =
+            Math.random()*5+"s";
+
+        p.style.animationDuration =
+            (3+Math.random()*5)+"s";
+
+        world.appendChild(p);
+
+    }
+
+}
+
+
+/* =====================================================
+   CONTINUE
+===================================================== */
+
+document
+.getElementById("nextButton")
+.addEventListener(
+    "click",
+    function(){
+
+        alert(
+            "Next chapter ❤️"
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
